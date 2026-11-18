@@ -1,0 +1,8 @@
+first_delinquent_month,accounts,default_rate_pct,months_of_lead_time
+1,3079,52.32,6.0
+2,862,42.0,5.0
+3,1234,39.79,4.0
+4,1371,38.07,3.0
+5,1154,40.03,2.0
+6,2369,36.05,1.0
+never,19931,11.71,

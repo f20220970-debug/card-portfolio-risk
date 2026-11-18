@@ -1,0 +1,6 @@
+from_month,status,inflow_any_pct,cure_any_pct,inflow_2plus_pct,cure_2plus_pct,inflow_3plus_pct
+1,comparable,3.2,31.6,3.2,31.6,0.45
+2,comparable,4.64,24.02,4.64,24.06,0.44
+3,comparable,6.13,26.24,6.13,26.28,0.69
+4,comparable,5.82,30.29,5.73,30.36,0.98
+5,not comparable,11.06,10.07,3.87,51.5,0.92

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Card Portfolio Risk</title>
+<style>
+:root {
+  --bg:#fbfaf8; --panel:#fff; --ink:#1a1a1a; --muted:#6b6b6b; --line:#e6e3de;
+  --accent:#1f6f54; --warn:#b4531f; --rule:#d8d4cd;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#15161a; --panel:#1d1f24; --ink:#eceae6; --muted:#9c9a95; --line:#2d3038;
+    --accent:#53b78f; --warn:#e08a4e; --rule:#343842;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#15161a; --panel:#1d1f24; --ink:#eceae6; --muted:#9c9a95; --line:#2d3038;
+  --accent:#53b78f; --warn:#e08a4e; --rule:#343842;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Inter,system-ui,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:48px 16px 80px}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
+h2{font-size:1.15rem;margin:44px 0 6px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 6px}
+.lede{color:var(--muted);max-width:64ch;margin:0 0 26px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px;margin:14px 0;overflow-x:auto}
+.flag{border-left:3px solid var(--warn)}
+.kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:24px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .n{font-size:1.5rem;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .l{color:var(--muted);font-size:.82rem;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td.n{text-align:right}
+th{color:var(--muted);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+tbody tr:last-child td{border-bottom:none}
+tr.muted td{color:var(--muted)}
+tr.hi td{color:var(--warn);font-weight:600}
+code{font-size:.86em;background:var(--bg);padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+.note{font-size:.86rem;color:var(--muted);max-width:66ch}
+.bar-row{display:grid;grid-template-columns:minmax(150px,1fr) 3fr 56px;gap:10px;
+  align-items:center;padding:3px 0;font-size:.86rem}
+.bar-label{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-track{background:var(--bg);border:1px solid var(--line);border-radius:999px;height:10px;overflow:hidden}
+.bar-fill{display:block;height:100%;background:var(--rule);border-radius:999px}
+.bar-fill.hot{background:var(--warn)}
+.bar-value{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.cols{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+a{color:var(--accent)}
+@media (max-width:520px){.bar-row{grid-template-columns:minmax(100px,1fr) 2fr 50px}}
+</style></head><body><div class="wrap">
+
+<h1>Card Portfolio Risk Profile</h1>
+<p class="sub">30,000 accounts · 180,000 account-months · April–September 2005</p>
+<p class="lede">SQL over a card book, answering the three questions a risk committee
+asks: what is the profile, is it getting worse, and where do the losses actually sit.
+One data defect decides how every other number here may be read.</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="n">22.1%</div><div class="l">eventual default rate</div></div>
+  <div class="kpi"><div class="n">3.20% → 5.73%</div><div class="l">monthly inflow to 2+ cycles</div></div>
+  <div class="kpi"><div class="n">31.6% → 30.4%</div><div class="l">cure rate, roughly flat</div></div>
+  <div class="kpi"><div class="n">+31.8%</div><div class="l">exposure growth</div></div>
+  <div class="kpi"><div class="n">35.2%</div><div class="l">of defaults from never-delinquent accounts</div></div>
+</div>
+
+<h2>The defect that governs everything else</h2>
+<div class="panel flag">
+<table><thead><tr><th>Month</th><th>Status = 1</th><th>Status = 2</th><th>Any delinquent</th></tr></thead><tbody><tr><td>2005-04</td><td class='n'>0</td><td class='n'>2,766</td><td class='n'>3,079</td></tr><tr><td>2005-05</td><td class='n'>0</td><td class='n'>2,626</td><td class='n'>2,968</td></tr><tr><td>2005-06</td><td class='n'>2</td><td class='n'>3,159</td><td class='n'>3,510</td></tr><tr><td>2005-07</td><td class='n'>4</td><td class='n'>3,819</td><td class='n'>4,213</td></tr><tr><td>2005-08</td><td class='n'>28</td><td class='n'>3,927</td><td class='n'>4,438</td></tr><tr class='hi'><td>2005-09</td><td class='n'>3,688</td><td class='n'>2,667</td><td class='n'>6,818</td></tr></tbody></table>
+</div>
+<p class="note">"One cycle past due" appears <strong>34 times across the first five months
+and 3,688 times in the sixth</strong>. A state cannot do that unless the coding changed.</p>
+<p class="note">It is not academic. On the final transition, the natural definition of
+delinquency shows inflow <strong>tripling to 11.06%</strong>
+and the cure rate <strong>collapsing to 10.07%</strong> — a book in
+free fall. The comparable definition shows inflow <strong>falling to
+3.87%</strong> and curing <strong>rising to
+51.50%</strong> — a book recovering. Both are the recoding.
+I had written the first version into the memo before checking.</p>
+
+<h2>Roll rates, both definitions side by side</h2>
+<div class="panel">
+<table><thead><tr><th>Transition</th><th>Comparable?</th><th>Inflow, any DQ</th><th>Cure, any DQ</th><th>Inflow, 2+</th><th>Cure, 2+</th><th>Inflow, 3+</th></tr></thead><tbody><tr><td class='n'>1</td><td>comparable</td><td class='n'>3.2%</td><td class='n'>31.6%</td><td class='n'>3.2%</td><td class='n'>31.6%</td><td class='n'>0.5%</td></tr><tr><td class='n'>2</td><td>comparable</td><td class='n'>4.6%</td><td class='n'>24.0%</td><td class='n'>4.6%</td><td class='n'>24.1%</td><td class='n'>0.4%</td></tr><tr><td class='n'>3</td><td>comparable</td><td class='n'>6.1%</td><td class='n'>26.2%</td><td class='n'>6.1%</td><td class='n'>26.3%</td><td class='n'>0.7%</td></tr><tr><td class='n'>4</td><td>comparable</td><td class='n'>5.8%</td><td class='n'>30.3%</td><td class='n'>5.7%</td><td class='n'>30.4%</td><td class='n'>1.0%</td></tr><tr class='muted'><td class='n'>5</td><td>not comparable</td><td class='n'>11.1%</td><td class='n'>10.1%</td><td class='n'>3.9%</td><td class='n'>51.5%</td><td class='n'>0.9%</td></tr></tbody></table>
+</div>
+<p class="note">Across the four comparable transitions, inflow to 2+ cycles roughly
+<strong>doubled</strong> while cure rates held flat. That is an inflow problem, not a
+collections problem. The greyed row is the recoding.</p>
+
+<h2>Where the losses sit</h2>
+<div class="panel">
+<table><thead><tr><th>Worst delinquency reached</th><th>% of book</th><th>Default rate</th><th>% of exposure</th><th>% of all defaults</th></tr></thead><tbody><tr><td>0 never delinquent</td><td class='n'>66.4%</td><td class='n'>11.7%</td><td class='n'>72.5%</td><td class='n'>35.2%</td></tr><tr><td>1 reached 1 cycle</td><td class='n'>5.6%</td><td class='n'>25.0%</td><td class='n'>0.3%</td><td class='n'>6.4%</td></tr><tr><td>2 reached 2 cycles</td><td class='n'>24.0%</td><td class='n'>43.5%</td><td class='n'>24.1%</td><td class='n'>47.2%</td></tr><tr><td>3 reached 3+ cycles</td><td class='n'>4.0%</td><td class='n'>62.9%</td><td class='n'>3.2%</td><td class='n'>11.3%</td></tr></tbody></table>
+</div>
+<p class="note">The never-delinquent segment has the lowest rate in the book and produces
+<strong>35.2% of all defaults</strong>, because it holds
+<strong>72.5% of exposure</strong>. A strategy aimed only at
+delinquent accounts addresses two thirds of the problem at most.</p>
+
+<h2>Utilisation is not monotone</h2>
+<div class="panel">
+<div class='bar-row'><span class='bar-label'>a. zero or credit balance</span><span class='bar-track'><span class='bar-fill hot' style='width:82.3%'></span></span><span class='bar-value'>24.8%</span></div>
+<div class='bar-row'><span class='bar-label'>b. 0-30%</span><span class='bar-track'><span class='bar-fill' style='width:56.3%'></span></span><span class='bar-value'>16.9%</span></div>
+<div class='bar-row'><span class='bar-label'>c. 30-60%</span><span class='bar-track'><span class='bar-fill' style='width:77.2%'></span></span><span class='bar-value'>23.2%</span></div>
+<div class='bar-row'><span class='bar-label'>d. 60-90%</span><span class='bar-track'><span class='bar-fill' style='width:91.8%'></span></span><span class='bar-value'>27.6%</span></div>
+<div class='bar-row'><span class='bar-label'>e. 90-100%</span><span class='bar-track'><span class='bar-fill' style='width:80.7%'></span></span><span class='bar-value'>24.3%</span></div>
+<div class='bar-row'><span class='bar-label'>f. over limit</span><span class='bar-track'><span class='bar-fill hot' style='width:100.0%'></span></span><span class='bar-value'>30.1%</span></div>
+</div>
+<p class="note">Risk climbs with utilisation, except that <strong>zero-balance accounts default
+at 24.8%</strong> — higher than every band below 60%. A zero balance bundles dormant accounts
+with accounts that stopped transacting because something went wrong. Treating "no balance"
+as "no risk" in a limit rule would be a mistake, and it is the kind of rule that gets written.</p>
+
+<h2>Early warning, and behaviour</h2>
+<div class="cols">
+<div class="panel"><table><thead><tr><th>First delinquent month</th><th>Accounts</th><th>Default rate</th></tr></thead><tbody><tr><td>1</td><td class='n'>3,079</td><td class='n'>52.3%</td></tr><tr><td>2</td><td class='n'>862</td><td class='n'>42.0%</td></tr><tr><td>3</td><td class='n'>1,234</td><td class='n'>39.8%</td></tr><tr><td>4</td><td class='n'>1,371</td><td class='n'>38.1%</td></tr><tr><td>5</td><td class='n'>1,154</td><td class='n'>40.0%</td></tr><tr><td>6</td><td class='n'>2,369</td><td class='n'>36.0%</td></tr><tr><td>never</td><td class='n'>19,931</td><td class='n'>11.7%</td></tr></tbody></table></div>
+<div class="panel"><table><thead><tr><th>Behaviour</th><th>% of book</th><th>Default rate</th></tr></thead><tbody><tr><td>a. transactor (pays in full)</td><td class='n'>1.7%</td><td class='n'>17.9%</td></tr><tr><td>b. heavy payer</td><td class='n'>29.2%</td><td class='n'>14.3%</td></tr><tr><td>c. light payer</td><td class='n'>17.6%</td><td class='n'>19.7%</td></tr><tr class='hi'><td>d. minimum payer</td><td class='n'>51.6%</td><td class='n'>26.8%</td></tr></tbody></table></div>
+</div>
+<p class="note">Any delinquency at all roughly triples the default rate against 11.7% for an
+account that never missed — and a first miss in the opening month still leaves six months of
+warning. Minimum payers are over half the book, carry the largest balances and default at
+nearly twice the rate of heavy payers.</p>
+
+<h2>Limit bands: rate and concentration disagree</h2>
+<div class="panel">
+<table><thead><tr><th>Credit limit</th><th>Default rate</th><th>% of exposure</th><th>% of all defaults</th></tr></thead><tbody><tr><td>a. under 50k</td><td class='n'>36.1%</td><td class='n'>4.3%</td><td class='n'>23.4%</td></tr><tr><td>b. 50-100k</td><td class='n'>26.0%</td><td class='n'>17.3%</td><td class='n'>28.0%</td></tr><tr><td>c. 100-200k</td><td class='n'>20.8%</td><td class='n'>26.7%</td><td class='n'>23.2%</td></tr><tr><td>d. 200-400k</td><td class='n'>15.9%</td><td class='n'>38.5%</td><td class='n'>21.7%</td></tr><tr><td>e. 400k+</td><td class='n'>11.9%</td><td class='n'>13.2%</td><td class='n'>3.7%</td></tr></tbody></table>
+</div>
+<p class="note">The highest-rate band holds 4.3% of exposure; the 200–400k band holds 38.5%
+and still contributes 21.7% of defaults. Rate sizes the risk per account, not the problem.</p>
+
+<p class="note" style="margin-top:40px">
+UCI <em>Default of Credit Card Clients</em> (Yeh &amp; Lien, 2009), NT$. Public research
+dataset, no personal identifiers. Six months, one issuer, no origination date and no
+recovery data, so nothing here is a through-the-cycle estimate. ·
+<a href="https://github.com/f20220970-debug/card-portfolio-risk">SQL, workbook and memo on GitHub</a>
+</p>
+</div></body></html>

@@ -1,0 +1,44 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Fetch the source panel
+        run: python src/get_data.py
+      - name: Build the database
+        run: python src/build_db.py
+      - name: Run every SQL analysis
+        run: python src/run_sql.py
+      - name: Tests
+        run: python -m pytest tests
+      - name: Rebuild the workbook and the results page
+        run: |
+          python src/build_workbook.py
+          python src/build_docs.py
+      - name: Check the headline figures still hold
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          roll = pd.read_csv("results/02b_roll_rate_by_month.csv")
+          comp = roll[roll["status"] == "comparable"]
+          assert len(comp) == 4, "comparable transition count changed"
+          first, last = comp["inflow_2plus_pct"].iloc[0], comp["inflow_2plus_pct"].iloc[-1]
+          assert last > first, "the deterioration finding no longer holds"
+          dq = pd.read_csv("results/03_risk_by_delinquency.csv")
+          never = dq.iloc[0]
+          assert never["pct_of_defaults"] > 30, "never-delinquent default share changed"
+          print(f"inflow {first}% -> {last}% | never-delinquent share of defaults "
+                f"{never['pct_of_defaults']}%")
+          PY

@@ -1,0 +1,5 @@
+behaviour,accounts,pct_of_book,default_rate_pct,avg_six_month_billings
+a. transactor (pays in full),463,1.69,17.93,21455.0
+b. heavy payer,7968,29.16,14.26,75463.0
+c. light payer,4794,17.55,19.69,243319.0
+d. minimum payer,14096,51.59,26.82,445467.0

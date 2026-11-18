@@ -1,0 +1,5 @@
+delinquency_band,accounts,pct_of_book,default_rate_pct,exposure_m,pct_of_exposure,pct_of_defaults
+0 never delinquent,19931,66.44,11.71,1113.5,72.46,35.17
+1 reached 1 cycle,1689,5.63,24.99,4.1,0.26,6.36
+2 reached 2 cycles,7187,23.96,43.55,370.7,24.12,47.17
+3 reached 3+ cycles,1193,3.98,62.87,48.5,3.16,11.3
